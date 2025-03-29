@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.2" RunE2="T">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="138" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\ssiva\Downloads\Big_data_cleaned.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Big_data_cleaned.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Order ID" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Order Date" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Ship Date" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Qtr" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Aging" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="c" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Ship Mode" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Product Category" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Quantity" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Product" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Sales" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Discount" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Profit" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Shipping Cost" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Order Priority" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Customer ID" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Customer Name" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Segment" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Country" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Region" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+            <Field name="Months" size="254" source="File: C:\Users\ssiva\Downloads\Big_data_cleaned.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="282" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="426" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="tonumber(Replace([Sales],&quot;$&quot;,&quot;&quot;))" field="Currency_Column" size="8" type="Double" enabled="true" />
+            <FormulaField expression="[Currency_Column]*83.5" field="Currency_Convert" size="4" type="Float" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Currency_Column = tonumber(Replace([Sales],"$",""))
+Currency_Convert = [Currency...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="582" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">E:\Big_data_Target.csv</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Big_data_Target.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="True" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Sales_Workflow</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="fbb51662-fbb3-4676-b312-3d61f7580168" />
+      <Telemetry>
+        <PreviousWorkflowId value="e8c6ea6a-00f8-44a1-820d-1872806b99dd" />
+        <OriginWorkflowId value="e8c6ea6a-00f8-44a1-820d-1872806b99dd" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Template>
+      <Owner>Mekala Sivaparvathi</Owner>
+      <FileName>Sales_Workflow.yxtd</FileName>
+      <TemplateImage>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</TemplateImage>
+      <Description />
+    </Template>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
